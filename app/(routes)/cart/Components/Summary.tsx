@@ -57,8 +57,8 @@ export default function Summary() {
         onClick={onCheckOut}
         className="w-full mt-6 flex space-x-2 items-center justify-center"
       >
-        {loading && <ClipLoader className="text-white mr-2" />}
-        <h5>Confirmar</h5>
+        {loading && <ClipLoader color="#ffffff" />}
+        <h5 className="ml-3">Confirmar</h5>
       </Button>
     </div>
   );
