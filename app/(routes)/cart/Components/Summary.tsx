@@ -6,6 +6,7 @@ import axios from "axios";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import { ClipLoader } from "react-spinners";
 
 export default function Summary() {
   const items = useCart((state) => state.items);
@@ -52,8 +53,12 @@ export default function Summary() {
           <Currency value={totalPrice} />
         </div>
       </div>
-      <Button onClick={onCheckOut} className="w-full mt-6">
-        Confirmar
+      <Button
+        onClick={onCheckOut}
+        className="w-full mt-6 flex space-x-2 items-center justify-center"
+      >
+        {loading && <ClipLoader />}
+        <h5>Confirmar</h5>
       </Button>
     </div>
   );
