@@ -14,6 +14,10 @@ const nextConfig = {
         protocol: "https",
         hostname: "mcode-ecommerce-template.vercel.app",
       },
+      {
+        protocol: "https",
+        hostname: "tailwindui.com",
+      },
     ],
   },
 };
