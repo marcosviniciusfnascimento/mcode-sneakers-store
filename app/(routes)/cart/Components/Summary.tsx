@@ -4,13 +4,14 @@ import Button from "@/Components/ui/Button";
 import useCart from "@/hooks/userCart";
 import axios from "axios";
 import { useSearchParams } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
 export default function Summary() {
   const items = useCart((state) => state.items);
   const removeAll = useCart((state) => state.removeAll);
   const searchParams = useSearchParams();
+  const [loading, setIsLoading] = useState(false);
 
   useEffect(() => {
     if (searchParams.get("success")) {
@@ -28,13 +29,18 @@ export default function Summary() {
   }, 0);
 
   const onCheckOut = async () => {
-    console.log("chamei");
-    const response = await axios.post(
-      `${process.env.NEXT_PUBLIC_API_URL}/checkout`,
-      { productIds: items.map((item) => item.id) }
-    );
+    // const response = await axios.post(
+    //   `${process.env.NEXT_PUBLIC_API_URL}/checkout`,
+    //   { productIds: items.map((item) => item.id) }
+    // );
 
-    window.location = response.data.url;
+    // window.location = response.data.url;
+
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+      toast.success("Produto comprado!");
+    }, 5000);
   };
 
   return (

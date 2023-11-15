@@ -12,7 +12,6 @@ interface ProductPageProps {
 }
 export default async function ProductPage(props: ProductPageProps) {
   const { params } = props;
-  console.log(params.productid);
   const product = await getProduct(params.productid);
 
   const suggestedProducts = await getProducts({

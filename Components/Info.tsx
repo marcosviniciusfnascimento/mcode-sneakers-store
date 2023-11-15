@@ -2,6 +2,7 @@
 import { Product } from "@/types";
 import Currency from "./Currency";
 import Button from "./ui/Button";
+import useCart from "@/hooks/userCart";
 import { ShoppingCart } from "lucide-react";
 
 interface InfoProps {
@@ -10,6 +11,7 @@ interface InfoProps {
 
 export default function Info(props: InfoProps) {
   const { data } = props;
+  const cart = useCart();
   return (
     <div>
       <h1 className="text-3xl font-bol text-gray-900">{data.name}</h1>
@@ -31,7 +33,10 @@ export default function Info(props: InfoProps) {
         />
       </div>
       <div className="mt-10 flex items-center justify-center gap-x-3">
-        <Button className="flex items-center gap-x-2">
+        <Button
+          className="flex items-center gap-x-2"
+          onClick={() => cart.addItem(data)}
+        >
           Adicionar ao Carrinho
           <ShoppingCart />
         </Button>
