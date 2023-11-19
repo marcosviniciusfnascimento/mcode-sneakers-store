@@ -30,19 +30,19 @@ export default function Summary() {
   }, 0);
 
   const onCheckOut = async () => {
-    // const response = await axios.post(
-    //   `${process.env.NEXT_PUBLIC_API_URL}/checkout`,
-    //   { productIds: items.map((item) => item.id) }
-    // );
+    const response = await axios.post(
+      `${process.env.NEXT_PUBLIC_API_URL}/checkout`,
+      { productIds: items.map((item) => item.id) }
+    );
 
-    // window.location = response.data.url;
+    window.location = response.data.url;
 
-    setIsLoading(true);
-    setTimeout(() => {
-      setIsLoading(false);
-      toast.success("Produto comprado!");
-      removeAll();
-    }, 5000);
+    // setIsLoading(true);
+    // setTimeout(() => {
+    //   setIsLoading(false);
+    //   toast.success("Produto comprado!");
+    //   removeAll();
+    // }, 5000);
   };
 
   return (
