@@ -30,19 +30,13 @@ export default function Summary() {
   }, 0);
 
   const onCheckOut = async () => {
+    setIsLoading(true);
     const response = await axios.post(
       `${process.env.NEXT_PUBLIC_API_URL}/checkout`,
       { productIds: items.map((item) => item.id) }
     );
-
     window.location = response.data.url;
-
-    // setIsLoading(true);
-    // setTimeout(() => {
-    //   setIsLoading(false);
-    //   toast.success("Produto comprado!");
-    //   removeAll();
-    // }, 5000);
+    setIsLoading(false);
   };
 
   return (
